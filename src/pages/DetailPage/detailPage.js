@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "components/Header/header";
-import SearchFilter from "components/SearchFilter/searchFilter";
+import SearchFilter from "pages/DetailPage/searchFilter";
+import ProblemList from "pages/DetailPage/problemList";
 
 const platforms = ["백준", "프로그래머스", "코드포스", "코드트리", "알고스팟"];
 const difficulties = ["브론즈", "실버", "골드", "플래티넘", "다이아"];
@@ -22,9 +23,10 @@ function DetailPage({ searchOptions }) {
   };
 
   return (
-    <div className="DetailPage">
+    <div className="DetailPage w-full">
       <Header searchOptions={searchOptions}></Header>
       <SearchFilter platforms={platforms} selectedPlatforms={selectedPlatforms} difficulties={difficulties} selectedDifficulties={selectedDifficulties} categories={categories} selectedCategories={selectedCategories} onPlatformSelect={handlePlatformSelect} onDifficultySelect={handleDifficultySelect} onCategorySelect={handleCategorySelect} />
+      <ProblemList></ProblemList>
     </div>
   );
 }

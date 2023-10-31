@@ -1,6 +1,6 @@
 import React from "react";
-import Logo from "components/Logo/logo";
-import SearchBar from "components/SearchBar/searchBar";
+import Logo from "components/logo";
+import SearchBar from "components/Header/searchBar";
 
 const Header = ({ className, searchOptions }) => {
   return (
