@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SearchBar = ({ className, onSearch }) => {
+const SearchBar = ({ className, onSearch, searchOptions }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (e) => {
@@ -18,8 +18,16 @@ const SearchBar = ({ className, onSearch }) => {
     <div className={`flex items-center border-solid border-b border-black pb-1 ${className}`}>
       <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
       <form onSubmit={handleSubmit} className="flex flex-grow">
-        <input type="text" value={searchTerm} onChange={handleInputChange} className="p-0 flex-grow border-0 px-4 text-2xl font-semibold focus:ring-0" />
-        {/* 드롭다운 메뉴 */}
+        <input type="text" value={searchTerm} onChange={handleInputChange} className="p-0 flex-grow border-0 px-4 text-2xl font-semibold focus:outline-none" />
+        {typeof searchOptions !== "undefined" && (
+          <select name="searchOption" id="searchOption" className="ml-2">
+            {searchOptions.map((option, index) => (
+              <option key={index} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        )}
       </form>
     </div>
   );
