@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SearchFilter({ platforms, selectedPlatforms, difficulties, selectedDifficulties, categories, selectedCategories, onPlatformSelect, onDifficultySelect, onCategorySelect }) {
+function SearchFilter({ platforms, selectedPlatforms, difficulties, selectedDifficulties, categories, selectedCategories, onPlatformSelect, onDifficultySelect, onCategorySelect, className }) {
   const [filterDetailView, setFilterDetailView] = useState(false);
 
   const handleFilterEditBtn = (e) => {
@@ -8,16 +8,18 @@ function SearchFilter({ platforms, selectedPlatforms, difficulties, selectedDiff
   };
 
   return (
-    <div className="flex flex-col w-full items-center px-20 md:px-40">
-      <div className="flex w-full max-w-screen-lg justify-between">
-        <button onClick={handleFilterEditBtn} className="flex items-center justify-center p-4 mt-8">
-          <p className={filterDetailView ? "text-black" : "text-gray-400"}>필터편집</p>
-        </button>
+    <div className="flex flex-col w-full items-center">
+      <div className="flex w-full max-w-screen-lg justify-between min-w-[512px]">
+        <div className="flex-shrink">
+          <button onClick={handleFilterEditBtn} className="flex items-center justify-center p-4 mt-8">
+            <p className={filterDetailView ? "text-black" : "text-gray-400"}>필터편집</p>
+          </button>
+        </div>
         <div className="flex-grow"></div>
         {/* <div className="overflow-x-auto flex items-center"></div> */}
       </div>
       {filterDetailView && (
-        <div className="flex-col w-full border border-black mx-4 text-xs max-w-screen-lg">
+        <div className="flex-col w-full border border-black mx-4 text-xs max-w-screen-lg min-w-[512px]">
           {/* <!-- 플랫폼 선택 창 --> */}
           <div className="flex w-full p-8 border-b-2 border-gray">
             <div className="w-1/12">플랫폼</div>
