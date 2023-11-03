@@ -12,8 +12,14 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<MainPage searchOptions={searchOptions} />} />
-          <Route path="/search" element={<DetailPage searchOptions={searchOptions} />} />
+          <Route
+            path="/"
+            element={<MainPage searchOptions={searchOptions} />}
+          />
+          <Route
+            path="/search"
+            element={<DetailPage searchOptions={searchOptions} />}
+          />
           {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Routes>
       </Router>

@@ -3,7 +3,7 @@ import logo from "assets/images/logo.png";
 import logoLight from "assets/images/logo-light.png";
 
 const Logo = ({ className, type = "default" }) => {
-  const logoSrc = type == "light" ? logoLight : logo;
+  const logoSrc = type === "light" ? logoLight : logo; // '==' 대신 '===' 쓰라고하네요
 
   return (
     <a href="/">
