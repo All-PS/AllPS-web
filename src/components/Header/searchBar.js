@@ -15,20 +15,29 @@ const SearchBar = ({ className, onSearch, searchOptions }) => {
   };
 
   return (
-    <div className={`flex items-center border-solid border-b border-black pb-1 ${className}`}>
-      <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
-      <form onSubmit={handleSubmit} className="flex flex-grow">
-        <input type="text" value={searchTerm} onChange={handleInputChange} className="p-0 flex-grow border-0 px-4 text-2xl font-semibold focus:outline-none" />
-        {typeof searchOptions !== "undefined" && (
-          <select name="searchOption" id="searchOption" className="ml-2">
-            {searchOptions.map((option, index) => (
-              <option key={index} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        )}
-      </form>
+    <div
+      className={`flex flex-col justify-center border-black border-b ${className}`}
+    >
+      <div className="flex items-center mb-2">
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
+        <form onSubmit={handleSubmit} className="flex flex-grow">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleInputChange}
+            className="flex-grow"
+          />
+          {typeof searchOptions !== "undefined" && (
+            <select name="searchOption" id="searchOption" className="ml-2">
+              {searchOptions.map((option, index) => (
+                <option key={index} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          )}
+        </form>
+      </div>
     </div>
   );
 };

@@ -4,9 +4,14 @@ import SearchBar from "components/Header/searchBar";
 
 const Header = ({ className, searchOptions }) => {
   return (
-    <div className={`flex w-full justify-between px-10 md:px-20 py-8 md:py-8 border-b-2 border-black ${className}`}>
-      <Logo type="light"></Logo>
-      <SearchBar searchOptions={searchOptions}></SearchBar>
+    <div
+      className={`flex flex-col md:flex-row items-center justify-between w-full border-black border-b-2 p-10 ${className}`}
+    >
+      <Logo type="light" className=""></Logo>
+      <SearchBar
+        searchOptions={searchOptions}
+        className="w-[400px] mt-20 md:mt-0"
+      ></SearchBar>
     </div>
   );
 };
