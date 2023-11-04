@@ -15,18 +15,11 @@ const SearchBar = ({ className, onSearch, searchOptions }) => {
   };
 
   return (
-    <div
-      className={`flex flex-col justify-center border-black border-b ${className}`}
-    >
+    <div className={`flex flex-col justify-center border-black border-b ${className}`}>
       <div className="flex items-center mb-2">
         <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
         <form onSubmit={handleSubmit} className="flex flex-grow">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={handleInputChange}
-            className="flex-grow"
-          />
+          <input type="text" value={searchTerm} onChange={handleInputChange} className="flex-grow" />
           {typeof searchOptions !== "undefined" && (
             <select name="searchOption" id="searchOption" className="ml-2">
               {searchOptions.map((option, index) => (
