@@ -1,11 +1,6 @@
 import React from "react";
-
-import algospot from "assets/images/platform/algospot-logo.png";
-import baekjoon from "assets/images/platform/baekjoon-logo.png";
-import codeforce from "assets/images/platform/codeforce-logo.png";
-import codetree from "assets/images/platform/codetree-logo.png";
-import programmers from "assets/images/platform/programmers-logo.png";
-import gold3 from "assets/images/tier/gold3-sample.png";
+import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ServiceIntro() {
   return (
@@ -32,25 +27,25 @@ function ServiceIntro() {
       <div className="flex flex-col items-center gap-y-12 mt-12 mb-24">
         <div className="inline-flex gap-x-12">
           <div className="flex items-center justify-center border border-black rounded-full w-[250px] h-[65px] p-1">
-            <img src={baekjoon} alt="로고" className="max-h-full max-w-full" />
+            <img src={`${process.env.PUBLIC_URL}/platform/baekjoon-logo.png`} alt="백준" className="max-h-full max-w-full" />
           </div>
           <div className="flex items-center justify-center border border-black rounded-full w-[250px] h-[65px] px-4">
             <img
-              src={programmers}
-              alt="로고"
+              src={`${process.env.PUBLIC_URL}/platform/programmers-logo.png`}
+              alt="프로그래머스"
               className="max-h-full max-w-full"
             />
           </div>
         </div>
         <div className="inline-flex gap-x-12">
           <div className="flex items-center justify-center border border-black rounded-full w-[250px] h-[65px] px-4">
-            <img src={codeforce} alt="로고" className="max-h-full max-w-full" />
+            <img src={`${process.env.PUBLIC_URL}/platform/codeforce-logo.png`} alt="코드포스" className="max-h-full max-w-full" />
           </div>
           <div className="flex items-center justify-center border border-black rounded-full w-[250px] h-[65px] p-1.5 bg-black">
-            <img src={codetree} alt="로고" className="max-h-full max-w-full" />
+            <img src={`${process.env.PUBLIC_URL}/platform/codetree-logo.png`} alt="코드트리" className="max-h-full max-w-full" />
           </div>
           <div className="flex items-center justify-center border border-black rounded-full w-[250px] h-[65px] p-4">
-            <img src={algospot} alt="로고" className="max-h-full max-w-full" />
+            <img src={`${process.env.PUBLIC_URL}/platform/algospot-logo.png`} alt="알고스팟" className="max-h-full max-w-full" />
           </div>
         </div>
       </div>
@@ -59,13 +54,10 @@ function ServiceIntro() {
         <p>플랫폼마다 다른 난이도 표기에 헷갈리셨나요?</p>
         <p>모든 문제를 Solved.ac 난이도로 바꿔드립니다.</p>
       </div>
-      <div className="inline-flex gap-x-20 justify-center items-center mt-12">
+      <div className="inline-flex gap-x-16 justify-center items-center mt-12">
         <p className="text-5xl font-bold text-[#FFA800]">Lv. 3</p>
-        <i
-          className="fa-solid fa-angles-right fa-2xl"
-          style={{ color: "#cccccc" }}
-        ></i>
-        <img src={gold3} alt="로고" className="h-[65px]" />
+        <FontAwesomeIcon icon={faAnglesRight} className="fa-2xl" style={{ color: "#cccccc", }}/>
+        <img src={`${process.env.PUBLIC_URL}/tier/gold3-sample.png`} alt="로고" className="h-[65px]" />
       </div>
       <p className="mt-40 mb-24 text-5xl font-bold">시작해보세요!</p>
       <p className="text-2xl font-light">
