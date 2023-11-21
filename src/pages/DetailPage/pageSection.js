@@ -19,10 +19,10 @@ function PageSection({ totalPages, currentPage, onPageChange }) {
                         <button onClick={() => onPageChange(page)} className="px-2 py-1">{page}</button>
                     </li>
                 ))}
-                <li className={`${currentPage === totalPages ? 'text-gray-300 cursor-not-allowed' : 'text-black cursor-pointer'}`}>
+                <li className={`${currentPage === totalPages || totalPages === 0 ? 'text-gray-300 cursor-not-allowed' : 'text-black cursor-pointer'}`}>
                     <button onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))} className="px-2 py-1">다음</button>
                 </li>
-                <li className={`${currentPage === totalPages ? 'text-gray-300 cursor-not-allowed' : 'text-black cursor-pointer'}`}>
+                <li className={`${currentPage === totalPages || totalPages === 0 ? 'text-gray-300 cursor-not-allowed' : 'text-black cursor-pointer'}`}>
                     <button onClick={() => onPageChange(totalPages)} className="px-2 py-1">마지막</button>
                 </li>
             </ul>

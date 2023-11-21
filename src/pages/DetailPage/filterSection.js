@@ -14,7 +14,7 @@ function FilterSection({ platforms, selectedPlatforms, difficulties, selectedDif
         <Toggle name="난이도" state={showDifficulty} setState={setShowDifficulty}></Toggle>
         <Toggle name="유형" state={showCategories} setState={setShowCategories}></Toggle>
       </div>
-      <div className={`w-full text-sm md:text-base transition-max-height ease-in-out duration-500 overflow-y-hidden ${filterDetailView ? "max-h-[500px]" : "pb-2 max-h-0"}`}>
+      <div className={`w-full text-sm md:text-base transition-max-height ease-in-out duration-500 overflow-y-hidden ${filterDetailView ? "max-h-[600px]" : "pb-2 max-h-0"}`}>
         {/* 필터링 선택창 */}
         <div className="flex flex-col w-full px-2 rounded-lg shadow-lg">
           {/* 플랫폼 선택 창 */}

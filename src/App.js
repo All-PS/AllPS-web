@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "pages/MainPage/mainPage";
 import DetailPage from "pages/DetailPage/detailPage";
 
-const searchOptions = [
-  { label: "문제명", value: "problemName" },
-  { label: "문제번호", value: "problemCode" },
+const searchTypes = [
+  { label: "문제명", value: "name" },
+  { label: "문제번호", value: "code" },
 ];
 
 function App() {
@@ -14,11 +14,11 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<MainPage searchOptions={searchOptions} />}
+            element={<MainPage searchTypes={searchTypes} />}
           />
           <Route
             path="/search"
-            element={<DetailPage searchOptions={searchOptions} />}
+            element={<DetailPage searchTypes={searchTypes} />}
           />
           {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Routes>

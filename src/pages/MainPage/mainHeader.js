@@ -1,7 +1,7 @@
 import SearchBar from "components/Header/searchBar";
 import Logo from "components/logo";
 
-function MainHeader ({ searchOptions }) {
+function MainHeader ({ searchTypes }) {
   return (
     <div className="flex flex-col w-full items-center ">
       {/* 로고 */}
@@ -9,7 +9,7 @@ function MainHeader ({ searchOptions }) {
       {/* 검색창 */}
       <div className="flex items-center w-3/5 border-solid pb-2 border-black mb-40 md:mb-48 ">
         <SearchBar
-          searchOptions={searchOptions}
+          searchTypes={searchTypes}
           className="w-full mt-20 md:mt-0"
         ></SearchBar>
       </div>

@@ -4,8 +4,8 @@ function FilterDetailSection({ title, options, selectedOptions, onSelect }) {
       <div className="flex justify-center w-1/12 mt-2 font-bold">{title}</div>
       <div className="flex w-11/12 flex-wrap">
         {options.map((option) => (
-          <div className="flex items-center justify-center w-1/5 p-2">
-            <button key={option} className={`w-full text-center whitespace-nowrap rounded-lg transition-colors ${selectedOptions[option] ? "text-black" : "font-light text-gray-400"}`} onClick={() => onSelect(option)}>
+          <div key={option} className="flex items-center justify-center w-1/5 p-2">
+            <button className={`w-full text-center whitespace-nowrap rounded-lg transition-colors ${selectedOptions[option] ? "text-black" : "font-light text-gray-400"}`} onClick={() => onSelect(option)}>
               {option}
             </button>
           </div>
