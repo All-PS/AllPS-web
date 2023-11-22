@@ -1,11 +1,11 @@
 import ServiceIntro from "pages/MainPage/serviceIntro";
 import MainHeader from "pages/MainPage/mainHeader";
 
-function MainPage({ searchOptions }) {
+function MainPage({ searchTypes }) {
 
   return (
     <div className="flex flex-col items-center pb-32 min-h-screen">
-      <MainHeader searchOptions={searchOptions}></MainHeader>
+      <MainHeader searchTypes={searchTypes}></MainHeader>
       <ServiceIntro />
     </div>
   );

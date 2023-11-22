@@ -57,7 +57,7 @@ function ServiceIntro() {
       <div className="inline-flex gap-x-16 justify-center items-center mt-12">
         <p className="text-5xl font-bold text-[#FFA800]">Lv. 3</p>
         <FontAwesomeIcon icon={faAnglesRight} className="fa-2xl" style={{ color: "#cccccc", }}/>
-        <img src={`${process.env.PUBLIC_URL}/tier/gold3-sample.png`} alt="로고" className="h-[65px]" />
+        <img src={`${process.env.PUBLIC_URL}/tier/골드3-sample.svg`} alt="로고" className="h-[65px]" />
       </div>
       <p className="mt-40 mb-24 text-5xl font-bold">시작해보세요!</p>
       <p className="text-2xl font-light">
