@@ -19,9 +19,9 @@ const categories = ["DP", "구현", "그리디", "완전탐색", "문자열",
                     "비트마스킹", "유량"];
 
 function DetailPage({ searchTypes }) {
-  const [selectedPlatforms, setSelectedPlatforms] = useState(platforms.reduce((acc, platform) => ({ ...acc, [platform]: true }), {}));
-  const [selectedDifficulties, setSelectedDifficulties] = useState(difficulties.reduce((acc, difficulty) => ({ ...acc, [difficulty]: true }), {}));
-  const [selectedCategories, setSelectedCategories] = useState(categories.reduce((acc, category) => ({ ...acc, [category]: true }), {}));
+  const [selectedPlatforms, setSelectedPlatforms] = useState(platforms.reduce((acc, platform) => ({ ...acc, [platform]: false }), {}));
+  const [selectedDifficulties, setSelectedDifficulties] = useState(difficulties.reduce((acc, difficulty) => ({ ...acc, [difficulty]: false }), {}));
+  const [selectedCategories, setSelectedCategories] = useState(categories.reduce((acc, category) => ({ ...acc, [category]: false }), {}));
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [problems, setProblems] = useState([]);
@@ -35,9 +35,9 @@ function DetailPage({ searchTypes }) {
   const prevLocationSearch = useRef(location.search);
 
   const resetFilters = () => {
-    setSelectedPlatforms(platforms.reduce((acc, platform) => ({ ...acc, [platform]: true }), {}));
-    setSelectedDifficulties(difficulties.reduce((acc, difficulty) => ({ ...acc, [difficulty]: true }), {}));
-    setSelectedCategories(categories.reduce((acc, category) => ({ ...acc, [category]: true }), {}));
+    setSelectedPlatforms(platforms.reduce((acc, platform) => ({ ...acc, [platform]: false }), {}));
+    setSelectedDifficulties(difficulties.reduce((acc, difficulty) => ({ ...acc, [difficulty]: false }), {}));
+    setSelectedCategories(categories.reduce((acc, category) => ({ ...acc, [category]: false }), {}));
   };
   
   const handleFilterChange = useCallback((filterType, value) => {
