@@ -56,7 +56,7 @@ function DetailPage({ searchTypes }) {
   
   const fetchData = useCallback( async () => {
     let query = window.location.search;
-    let url = "http://localhost:8080/search" + query;
+    let url = "https://allps-server.1bronze.dev/search" + query;
 
     try {
       const response = await fetch(url, {
