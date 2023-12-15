@@ -29,7 +29,7 @@ const SearchBar = ({ className, searchTypes }) => {
                .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
                .join('&');
   
-      navigate(`/search?${query}`);
+      navigate(`https://allps-server.1bronze.dev/search?${query}`);
     }
 
     useEffect(() => {
