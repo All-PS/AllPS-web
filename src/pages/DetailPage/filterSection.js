@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import {
+  selectedPlatformsState,
   showDifficultyState,
   showCategoriesState,
 } from "pages/DetailPage/state";
@@ -10,7 +11,7 @@ import Toggle from "components/toggle";
 //showDifficulty,setShowDifficulty,showCategories,setShowCategories,
 function FilterSection({
   platforms,
-  selectedPlatforms,
+  // selectedPlatforms,
   difficulties,
   selectedDifficulties,
 
@@ -26,29 +27,42 @@ function FilterSection({
   const [showDifficultyFilter, setShowDifficultyFilter] = useState(true); // 난이도 필터의 표시 상태 추가
   // const [showAdvancedDifficulties, setShowAdvancedDifficulties] = useState(false); // 추가된 상태: 고급 난이도 표시 여부
 
+  const [selectedPlatforms, setSelectedPlatforms] = useRecoilState(
+    selectedPlatformsState
+  );
+  
   const [showDifficulty, setShowDifficulty] =
     useRecoilState(showDifficultyState);
   const [showCategories, setShowCategories] =
     useRecoilState(showCategoriesState);
 
-  const selectAllPlatforms = () => {
-    onPlatformSelect(platforms);
-  };
-
   const isAllPlatformsSelected =
     Object.values(selectedPlatforms).every(Boolean);
 
+
+
+    
   const toggleAllPlatforms = () => {
     if (isAllPlatformsSelected) {
+      console.log("모든 플랫폼 해제");
       // 모든 플랫폼 해제
-      onPlatformSelect(
-        platforms.reduce((acc, platform) => ({ ...acc, [platform]: false }), {})
-      );
+      // onPlatformSelect(
+      //   platforms.reduce((acc, platform) => ({ ...acc, [platform]: false }), {})
+      // );
+      const newSelectedPlatforms = Object.keys(selectedPlatforms).reduce((acc, platform) => {
+        return { ...acc, [platform]: false };
+      }, {});
+      setSelectedPlatforms(newSelectedPlatforms);
     } else {
+      console.log("모든 플랫폼 선택");
       // 모든 플랫폼 선택
-      onPlatformSelect(
-        platforms.reduce((acc, platform) => ({ ...acc, [platform]: true }), {})
-      );
+      // onPlatformSelect(
+      //   platforms.reduce((acc, platform) => ({ ...acc, [platform]: true }), {})
+      // );
+      const newSelectedPlatforms = Object.keys(selectedPlatforms).reduce((acc, platform) => {
+        return { ...acc, [platform]: true };
+      }, {});
+      setSelectedPlatforms(newSelectedPlatforms);
     }
   };
 
@@ -134,9 +148,6 @@ function FilterSection({
           setState={setShowAdvancedDifficulties}
         />
 
-        <button onClick={toggleAllPlatforms} className="your-button-styles">
-          {isAllPlatformsSelected ? "모든 플랫폼 해제" : "모든 플랫폼 선택"}
-        </button>
       </div>
       <div
         className={`w-full text-sm md:text-base transition-max-height ease-in-out duration-500 overflow-y-hidden ${
@@ -151,7 +162,7 @@ function FilterSection({
             options={platforms}
             selectedOptions={selectedPlatforms}
             onSelect={onPlatformSelect}
-            onTitleClick={selectAllPlatforms} // 핸들러 추가
+            onTitleClick={toggleAllPlatforms} // 핸들러 추가
           />
           {/* 난이도 선택 창 */}
           {showDifficultyFilter && ( // 난이도 필터의 표시 여부에 따라 렌더링 제어

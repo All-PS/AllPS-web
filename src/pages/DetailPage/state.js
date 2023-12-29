@@ -2,7 +2,7 @@
 import { atom } from "recoil";
 
 export const platforms = [
-  "백준",
+  "백준", 
   "프로그래머스",
   "코드포스",
   "코드트리",
