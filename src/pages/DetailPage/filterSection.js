@@ -1,18 +1,22 @@
+import { useRecoilState } from "recoil";
+import {
+  showDifficultyState,
+  showCategoriesState,
+} from "pages/DetailPage/state";
 import React, { useState, useEffect } from "react";
 import FilterDetailSection from "pages/DetailPage/filterDetailSection";
 import Toggle from "components/toggle";
 
+//showDifficulty,setShowDifficulty,showCategories,setShowCategories,
 function FilterSection({
   platforms,
   selectedPlatforms,
   difficulties,
   selectedDifficulties,
-  showDifficulty,
-  setShowDifficulty,
+
   categories,
   selectedCategories,
-  showCategories,
-  setShowCategories,
+
   onPlatformSelect,
   onDifficultySelect,
   onCategorySelect,
@@ -21,6 +25,32 @@ function FilterSection({
   const [filterDetailView, setFilterDetailView] = useState(false);
   const [showDifficultyFilter, setShowDifficultyFilter] = useState(true); // 난이도 필터의 표시 상태 추가
   // const [showAdvancedDifficulties, setShowAdvancedDifficulties] = useState(false); // 추가된 상태: 고급 난이도 표시 여부
+
+  const [showDifficulty, setShowDifficulty] =
+    useRecoilState(showDifficultyState);
+  const [showCategories, setShowCategories] =
+    useRecoilState(showCategoriesState);
+
+  const selectAllPlatforms = () => {
+    onPlatformSelect(platforms);
+  };
+
+  const isAllPlatformsSelected =
+    Object.values(selectedPlatforms).every(Boolean);
+
+  const toggleAllPlatforms = () => {
+    if (isAllPlatformsSelected) {
+      // 모든 플랫폼 해제
+      onPlatformSelect(
+        platforms.reduce((acc, platform) => ({ ...acc, [platform]: false }), {})
+      );
+    } else {
+      // 모든 플랫폼 선택
+      onPlatformSelect(
+        platforms.reduce((acc, platform) => ({ ...acc, [platform]: true }), {})
+      );
+    }
+  };
 
   // 고급 난이도 표시하기 토글 상태
   const [showAdvancedDifficulties, setShowAdvancedDifficulties] =
@@ -44,7 +74,7 @@ function FilterSection({
       onDifficultySelect(difficulties);
     }
   };
-  // 고급 난이도 필터링
+
   const filterAdvancedDifficulties = (difficulties) => {
     if (showAdvancedDifficulties) {
       return difficulties;
@@ -53,26 +83,6 @@ function FilterSection({
       ["브론즈", "실버", "골드", "플래티넘", "다이아"].includes(difficulty)
     );
   };
-
-  // 고급 난이도를 필터링하는 함수
-  // const filterAdvancedDifficulties = (difficulties) => {
-  //   if (showAdvancedDifficulties) {
-  //     return difficulties;
-  //   }
-  //   return difficulties.filter((difficulty) =>
-  //     ["브론즈", "실버", "골드", "플래티넘", "다이아"].includes(difficulty)
-  //   );
-  // };
-  // // 난이도 전체 선택/해제 토글
-  // const toggleAllDifficulties = () => {
-  //   if (selectedDifficulties.length === difficulties.length) {
-  //     // 모든 난이도가 선택되어 있다면, 모두 해제
-  //     onDifficultySelect([]);
-  //   } else {
-  //     // 그렇지 않다면, 모든 난이도를 선택
-  //     onDifficultySelect(difficulties);
-  //   }
-  // };
 
   return (
     <div
@@ -90,16 +100,10 @@ function FilterSection({
           검색필터
         </button>
 
-        {/* <Toggle
+        <Toggle
           name="난이도"
           state={showDifficulty}
           setState={setShowDifficulty}
-        ></Toggle> */}
-
-        <Toggle
-          name="난이도 전체 선택"
-          state={isAllDifficultiesSelected}
-          setState={toggleAllDifficulties}
         ></Toggle>
 
         {/* <button
@@ -112,32 +116,27 @@ function FilterSection({
             : "전체 선택"}
         </button> */}
 
-        {/* <Toggle
+        <Toggle
           name="유형"
           state={showCategories}
           setState={setShowCategories}
-        ></Toggle> */}
+        ></Toggle>
 
-        {/* <button
-          onClick={() => setShowDifficultyFilter(!showDifficultyFilter)}
-          className="px-4 text-sm md:text-base"
-        >
-          난이도 필터 {showDifficultyFilter ? "접기" : "펼치기"}
-        </button>{" "} */}
-        {/* 고급 난이도 표시하기 토글 */}
+        <Toggle
+          name="난이도 전체 선택"
+          state={isAllDifficultiesSelected}
+          setState={toggleAllDifficulties}
+        ></Toggle>
+
         <Toggle
           name="난이도 보기"
           state={showAdvancedDifficulties}
           setState={setShowAdvancedDifficulties}
         />
-        {/* 난이도 필터 토글 버튼 추가 */}
 
-        {/* <button
-          onClick={() => setShowAdvancedDifficulties(!showAdvancedDifficulties)}
-          className="px-4 text-sm md:text-base"
-        >
-          고급 난이도 {showAdvancedDifficulties ? "숨기기" : "표시하기"}
-        </button> */}
+        <button onClick={toggleAllPlatforms} className="your-button-styles">
+          {isAllPlatformsSelected ? "모든 플랫폼 해제" : "모든 플랫폼 선택"}
+        </button>
       </div>
       <div
         className={`w-full text-sm md:text-base transition-max-height ease-in-out duration-500 overflow-y-hidden ${
@@ -152,6 +151,7 @@ function FilterSection({
             options={platforms}
             selectedOptions={selectedPlatforms}
             onSelect={onPlatformSelect}
+            onTitleClick={selectAllPlatforms} // 핸들러 추가
           />
           {/* 난이도 선택 창 */}
           {showDifficultyFilter && ( // 난이도 필터의 표시 여부에 따라 렌더링 제어
