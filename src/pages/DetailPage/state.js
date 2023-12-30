@@ -2,18 +2,13 @@
 import { atom } from "recoil";
 
 export const platforms = [
-  "백준", 
+  "백준",
   "프로그래머스",
   "코드포스",
   "코드트리",
   "알고스팟",
 ];
 export const difficulties = [
-  "브론즈",
-  "실버",
-  "골드",
-  "플래티넘",
-  "다이아",
   "브론즈5",
   "실버5",
   "골드5",
