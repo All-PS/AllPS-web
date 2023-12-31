@@ -280,16 +280,22 @@ function DetailPage({ searchTypes }) {
   // 필터 초기화 함수
   const resetFilters = () => {
     setSelectedPlatforms(
-      platforms.reduce((acc, platform) => ({ ...acc, [platform]: false }), {})
+      platforms.reduce(
+        (acc, platform) => ({ ...acc, [platform.ko]: false }),
+        {}
+      )
     );
     setSelectedDifficulties(
       difficulties.reduce(
-        (acc, difficulty) => ({ ...acc, [difficulty]: false }),
+        (acc, difficulty) => ({ ...acc, [difficulty.ko]: false }),
         {}
       )
     );
     setSelectedCategories(
-      categories.reduce((acc, category) => ({ ...acc, [category]: false }), {})
+      categories.reduce(
+        (acc, category) => ({ ...acc, [category.ko]: false }),
+        {}
+      )
     );
   };
 
@@ -319,16 +325,27 @@ function DetailPage({ searchTypes }) {
         headers: {
           "Content-Type": "application/json",
         },
+        // body: JSON.stringify({
+        //   platforms: Object.keys(selectedPlatforms).filter(
+        //     (platform) => selectedPlatforms[platform]
+        //   ),
+        //   difficulties: Object.keys(selectedDifficulties).filter(
+        //     (difficulty) => selectedDifficulties[difficulty]
+        //   ),
+        //   categories: Object.keys(selectedCategories).filter(
+        //     (category) => selectedCategories[category]
+        //   ),
+        //   page: currentPage,
         body: JSON.stringify({
-          platforms: Object.keys(selectedPlatforms).filter(
-            (platform) => selectedPlatforms[platform]
-          ),
-          difficulties: Object.keys(selectedDifficulties).filter(
-            (difficulty) => selectedDifficulties[difficulty]
-          ),
-          categories: Object.keys(selectedCategories).filter(
-            (category) => selectedCategories[category]
-          ),
+          platforms: platforms
+            .filter((platform) => selectedPlatforms[platform.ko])
+            .map((platform) => platform.en), // 영어 이름으로 서버에 전달
+          difficulties: difficulties
+            .filter((difficulty) => selectedDifficulties[difficulty.ko])
+            .map((difficulty) => difficulty.en), // 영어 이름으로 서버에 전달
+          categories: categories
+            .filter((category) => selectedCategories[category.ko])
+            .map((category) => category.en), // 영어 이름으로 서버에 전달
           page: currentPage,
         }),
       });
@@ -347,6 +364,9 @@ function DetailPage({ searchTypes }) {
     selectedDifficulties,
     selectedCategories,
     currentPage,
+    platforms,
+    difficulties,
+    categories,
   ]);
 
   // URL 변경 시 필터 리셋 및 데이터 페치

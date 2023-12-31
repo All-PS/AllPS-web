@@ -16,18 +16,18 @@ function FilterDetailSection({
       <div className="flex w-11/12 flex-wrap">
         {options.map((option) => (
           <div
-            key={option}
+            key={option.ko}
             className="flex items-center justify-center w-1/5 p-2"
           >
             <button
               className={`w-full text-center whitespace-nowrap rounded-lg transition-colors ${
-                selectedOptions[option]
+                selectedOptions[option.ko]
                   ? "text-black"
                   : "font-light text-gray-400"
               }`}
-              onClick={() => onSelect(option)}
+              onClick={() => onSelect(option.ko)}
             >
-              {option}
+              {option.ko}
             </button>
           </div>
         ))}
