@@ -12,8 +12,8 @@ export const platforms = [
   { en: "baekjoon", ko: "백준" },
   { en: "programmers", ko: "프로그래머스" },
   { en: "codeforces", ko: "코드포스" },
-  { en: "codetree", ko: "코드트리" },
-  { en: "algospot", ko: "알고스팟" },
+  //{ en: "codetree", ko: "코드트리" },
+  //{ en: "algospot", ko: "알고스팟" },
 ];
 // export const difficulties = [
 //   "브론즈5",
