@@ -17,7 +17,7 @@ function ProblemsSection({ className, showDifficulty, showCategories, problems }
           {problems.map((problem, index) => (
             <tr key={index} className="">
               <td className="px-4">
-                <div className="-16">{showDifficulty && <img src={`${process.env.PUBLIC_URL}/tier/${problem.difficulty}-sample.svg`} alt={problem.difficulty} className="object-cover h-10 w-auto" />}</div>
+                <div className="-16">{showDifficulty && <img src={`${process.env.PUBLIC_URL}/tier/${problem.difficulty}.png`} alt={problem.difficulty} className="object-cover h-10 w-auto" />}</div>
               </td>
               <td className="py-6 px-4">
                 <div className="w-[140px] sm:w-[215px] md:w-[200px] lg:w-[350px] truncate ..."><a href={problem.url} target='_blank' rel="noreferrer">{problem.name}</a></div>
